@@ -1,5 +1,5 @@
 var assert = require('assert');
-var compost = require('./compost');
+var compost = require('../compost');
 var Queue = compost.Queue;
 
 var Tester = function() {
@@ -13,10 +13,12 @@ var Tester = function() {
 };
 var tester = new Tester();
 
+
 describe('Compost', function() {
   describe('Queue', function() {
     describe('#push()', function() {
       it('should created a list of tasks', function() {
+        debugger;
         var queue = new Queue(0);
         queue.push(tester.callme, 'famous');
         assert.equal(queue.tasks.length, 1);
@@ -101,6 +103,28 @@ describe('Compost', function() {
         queue.run();
         assert.equal(tester.i, 2);
         assert.equal(queue.count(), 0);
+      });
+    });
+
+    describe('Queue() with a limit', function() {
+      it('should have no limit when 0 is passed', function() {
+        var queue = new Queue(0);
+        [1,2,3].forEach(function(i) {
+          queue.push(function(n){return n}, i);
+        });
+        assert.equal(queue.count(), 3);
+        queue.run();
+        assert.equal(queue.count(), 0);
+      });
+
+      xit('should limit the number of execution in a second', function() {
+        var queue = new Queue(1);
+        [1,2,3].forEach(function(i) {
+          queue.push(function(n){return n}, i);
+        });
+        assert.equal(queue.count(), 3);
+        queue.run();
+        assert.equal(queue.count(), 2);
       });
     });
 

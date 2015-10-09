@@ -1,11 +1,13 @@
 (function() {
   'use strict';
 
+  var TimeStack = require('./timestack');
+
   module.exports = {
     Queue: function(qps) {
-      this.qps = qps || 0;
-      this.tasks = [];
       this.isRunning = false;
+      this.tasks = [];
+      //this.timestack = new TimeStack(qps);
 
       this.push = function(fn, params, context) {
         if(typeof fn !== "function") {
@@ -20,7 +22,6 @@
           params: params,
           context: context
         });
-
         return this;
       };
 
@@ -55,12 +56,7 @@
 
       function execTask(task) {
         if(task && task.fn) {
-          try {
-            return task.fn.apply(task.context, task.params);
-          }
-          catch(e) {
-            debugger;
-          }
+          return task.fn.apply(task.context, task.params);
         }
       }
     }
