@@ -1,0 +1,31 @@
+{
+  "name": "compost",
+  "version": "0.0.1",
+  "description": "Queue your tasks and limit their number of excecutions per second.",
+  "main": "compost.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinyll/compost.git"
+  },
+  "keywords": [
+    "pile",
+    "queue",
+    "qps",
+    "timeout",
+    "settimeout",
+    "time",
+    "limit"
+  ],
+  "author": "Vincent Agnano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vinyll/compost/issues"
+  },
+  "homepage": "https://github.com/vinyll/compost#readme",
+  "dependencies": {
+    "mocha": "^2.3.3"
+  }
+}
