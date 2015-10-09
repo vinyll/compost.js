@@ -2,6 +2,8 @@
 
 A tasks queuing system for Node.
 
+[![Travis build](https://travis-ci.org/vinyll/compost.js.svg)](https://travis-ci.org/vinyll/compost.js)
+
 ## Usage
 
   var compost = require('compost');
